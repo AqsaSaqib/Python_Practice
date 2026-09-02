@@ -17,6 +17,6 @@ print("The square of:", x, "is", square(x))
 
 # What is a dictionary comprehension?
 "Dictionaty Comprehension is a easy or short way to create a dictionary . It is similar to list comprehension and its syntax is also same to list comprehension and the difference is for dictionary we use curly brackets instead of square brackets and we pass key:pair in it."
-
-# mydict = {y:y**y for y in range(10)}
-# mydict = {key: value for key, value in iterable if condition == True}
+mydict = {y:y**y for y in range(10)}
+print(mydict)
+# mydict = {key: value for item in iterable if condition == True}
