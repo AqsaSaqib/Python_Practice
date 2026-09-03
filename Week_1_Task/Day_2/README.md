@@ -17,8 +17,8 @@ The implementation includes:
 5) Extracting detected outlier values using Boolean Masking
 
 # Technologies used:
-Python 
-Numpy
+- Python 
+- Numpy
 
 # Learning Outcomes
 - Understand NumPy arrays and broadcasting.
