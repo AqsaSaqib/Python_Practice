@@ -1,5 +1,4 @@
-# Conceptual 
-
+# Conceptual Questions
 # BroadCasting in Numpy
 """ 
 Broadcasting simply measns that numpy automatically performs arithmetic operations on array of different shapes. It is a simple method to perform operations on shapes of different sizes. 
@@ -20,7 +19,7 @@ arr = np.array([[1,2,3],
                 [21,22,23]])
 result = arr[arr[:,0] > 10] # will give us the rows where column value is greater than 10.   
 print("Result:\n", result)
-print("\n")           
+print("\n")   
 
 # Difference between .reshape() and .flatten()?
 """ 
@@ -35,7 +34,7 @@ print("Reshaped array:\n", reshaped)
 print("\n")   
 flattened = arr.flatten()
 print("Flattened array:\n", flattened)
-print("\n")   
+print("\n")
 
 # How do you generate a random array of shape (5,5)?
 """
@@ -51,17 +50,46 @@ axis = 0 means along the rows or operations perform on columns and axis = 1 mean
 """
 
 # Implementation
-import numpy as np 
-sensor_data = np.random.randint(2, 30, size = 12).reshape(3,4)
-print("The Values of sensor data is as follow:\n", sensor_data)
+import numpy as np
+np.random.seed(42)
+n = 30
+sensor_data = np.random.normal(loc=25, scale=2, size=n)
+# Outliers
+sensor_data[7] = 45
+sensor_data[17] = 5
+sensor_data[27] = 57
+print("Sensor Data:\n", sensor_data)
+print("\n")
 
-# Statistics
+# Rolling Statistics
+window_size = 3
+windows = np.lib.stride_tricks.sliding_window_view(
+    sensor_data,
+    window_shape=window_size
+)
+rolling_mean = np.mean(windows, axis=1)
+rolling_std = np.std(windows, axis=1)
+print("Rolling Mean:\n", rolling_mean)
+print("\n")
+print("Rolling Standard Deviation:\n", rolling_std)
+print("\n")
+
+# Z-Score Normalization
 mean = np.mean(sensor_data)
-print("The mean of sensor_data is:\n", mean)
-
 std = np.std(sensor_data)
-print("The std of sensor_data is:\n", std)
+z_scores = (sensor_data - mean) / std
+print("Mean:\n", mean)
+print("\n")
+print("Standard Deviation:\n", std)
+print("\n")
+print("Z-Scores:\n", z_scores)
+print("\n")
 
-# Z-score
-z_score = (sensor_data - mean) / std
-print("Z-score:\n", z_score)
+# Detect Outliers
+outlier_mask = np.abs(z_scores) > 2
+print("Outlier Mask:\n", outlier_mask)
+print("\n")
+# Get Outlier Values
+outliers = sensor_data[outlier_mask]
+print("Outliers:\n", outliers)
+
