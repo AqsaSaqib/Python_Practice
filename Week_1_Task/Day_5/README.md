@@ -28,7 +28,7 @@ The dataset used in this project is **Superstore.csv**. It contains information 
 * Pandas
 * Matplotlib
 * Seaborn
-* Jupyter Notebook / Google Colab
+* Google Colab
 
 # Main Functions Used
 ```python
