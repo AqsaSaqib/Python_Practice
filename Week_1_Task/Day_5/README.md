@@ -19,7 +19,6 @@ In this project, I used **Python Matplotlib and Seaborn** to visualize the Super
 2. Create a bar chart of average Sales by Category.
 3. Create a boxplot to identify outliers.
 4. Create a correlation heatmap of numeric columns.
-5. Combine multiple charts into one figure.
 
 # Dataset
 The dataset used in this project is **Superstore.csv**. It contains information about orders, products, sales, discounts, profits, categories, and regions.
