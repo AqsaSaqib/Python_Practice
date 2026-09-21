@@ -1,49 +1,74 @@
-# AFL Match Context Integration
+# **AFL Player and Match Context Analysis**
 
-## Overview
-This task enriches the **Round-by-Round Player Performance dataset** with match context from the **Team Match dataset**. The added context includes `home_away`, `venue`, and `crowd`, allowing player performance to be analyzed in relation to match conditions.
+## **Overview**
+This project combines AFL player performance data with team match information.
+The main aim is to see how match factors like **home or away games, crowd size, and venue** are related to player performance.
 
-## Datasets
-* `Players_round_by_round_stat_cleaned.csv` — Contains player-level performance statistics.
-* `Team_Matches_Cleaned.csv` — Contains team-level match information and context.
+## **Dataset**
+Three datasets were used:
+* `Team_Matches_Raw.csv` – Raw team match data
+* `Team_Matches_Cleaned.csv` – Cleaned team match data
+* `Players_round_by_round_stat_cleaned.csv` – Cleaned player statistics
 
-## Tasks Performed
+## **Tasks Performed**
 
-### 1. Relationship Discovery
-Common fields between both datasets were identified. A composite merge key was selected:
-**`team + round + year + match_date`**
-A composite key was required to correctly identify the specific team match associated with each player record.
+1. **Data Loading & Checking**
+   * Loaded the datasets using Pandas
+   * Checked rows and columns
+   * Checked data types
+   * Checked missing values and duplicates
 
-### 2. Context Enrichment
-The two datasets were merged using a **left join**. The following match-context columns were added to the player dataset:
-* `home_away`
-* `venue`
-* `crowd`
-Team names were standardized before merging to handle naming differences such as `W. Bulldogs` and `Western Bulldogs`.
+2. **Data Cleaning**
+   * Converted `match_date` into the correct date format
+   * Converted `crowd` into numeric format
+   * Removed duplicate records
+   * Filled missing crowd values using the median
 
-### 3. Merge Validation
-The merged dataset was checked for:
-* Unmatched records
-* Duplicate records
-* Changes in the number of player records
-* Missing match-context values
-The original player dataset contained **274,079 records**, and the record count was maintained after enrichment.
+3. **Saving Cleaned Data**
+   * Saved the cleaned match data as `Team_Matches_Cleaned.csv`
 
-### 4. Contextual Analysis
-The enriched dataset was used to examine:
-* Average fantasy points at home versus away
-* The relationship between crowd size and fantasy points
-* Average player performance across venues
-Home games had an average of approximately **66.49 fantasy points**, compared with **64.00 away**. The crowd-to-fantasy-points correlation was approximately **0.015**, indicating a very weak linear relationship.
+4. **Finding Common Data**
+   * Loaded player and match datasets
+   * Found common columns
+   * Standardized team names
+   * Changed `W. Bulldogs` to `Western Bulldogs`
+   * Renamed `team_name` to `team`
+   * Used team, round, year, and match date as merge keys
 
-### 5. Data Quality Report
-The integration process documented the merge key, merge strategy, naming inconsistencies, validation results, and assumptions made during the integration.
+5. **Merging Data**
+   * Matched the player data with match data
+   * Added home/away, venue, and crowd information
+   * Used a left merge to keep all player records
 
-## Tools Used
+6. **Creating Enriched Dataset**
+   * Created a new dataset with player and match information
+   * Saved it as `Players_Round_By_Round_Enriched.csv`
 
+7. **Merge Checking**
+   * Checked missing home/away values
+   * Checked missing venue and crowd values
+   * Checked duplicate records
+   * Compared records before and after merging
+
+8. **Analysis**
+   * Compared player fantasy points in home and away games
+   * Checked the relationship between crowd size and fantasy points
+   * Compared player performance at different venues
+   * Found venues with higher average fantasy points
+
+9. **Data Quality Report**
+   * Checked duplicate merge keys
+   * Checked missing values
+   * Checked records before and after merging
+   * Documented the merge method
+
+## **Tools Used**
 * Python
 * Pandas
+* Matplotlib
+* Seaborn
 * Google Colab
 
-## Output
-The final output is an enriched player dataset containing the original player statistics along with **home/away status, venue, and crowd information**.
+## **Learning Outcome**
+This project helped me understand how to **clean, combine, and analyse different datasets**.
+I learned how match information such as **home/away status, crowd size, and venue** can be added to player performance data to get more useful insights.
