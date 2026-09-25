@@ -8,7 +8,7 @@ The database is for a shop that rents out DVDs. A customer rents a DVD copy of a
 | File | What's inside |
 |---|---|
 | `SQL_Joins.sql` | All JOIN queries for the challenges |
-| `Relationship_Discovery.md` | How the tables are connected |
+| `Relationship_Discovery.md` | Primary Keys, Foreign Keys, Relationship between columns |
 | `Concept_Check.md` | Answers to concept questions |
 | `Screenshots/` | Query outputs from PostgreSQL |
 
