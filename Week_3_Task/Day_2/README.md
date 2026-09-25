@@ -46,6 +46,7 @@ Joined `customer → rental`, counted rentals with `COUNT()`, and used `HAVING` 
 **9. Revenue by City**
 Joined `payment → customer → address → city` and used `SUM()` to calculate rental revenue for each city.
 
+
 ## Bonus: Which Actor Earned the Most Revenue?
 `actor` and `payment` are not directly connected, so we need tables in the middle.
 
