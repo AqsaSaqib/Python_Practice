@@ -19,33 +19,32 @@ A JOIN connects two tables using a column they both have. For example, `customer
 
 ## How Each Question Was Solved
 
-**1. Customer Name, Email, City, and Country**
-Joined `customer → address → city → country` step by step, because the customer table only stores an `address_id`, not the city or country.
+**1. Customer Details**
+Joined `customer → address → city → country` to get the customer's name, email, city, and country.
 
-**2. Every Payment with Customer Name, Film Title, and Amount**
-Joined `payment → customer` to get the name, and `payment → rental → inventory → film` to get the title, because a payment doesn't know the film directly.
+**2. Payment Details**
+Joined `payment → customer` for customer names and `payment → rental → inventory → film` to find the rented film and payment amount.
 
-**3. Top 10 Customers by Total Amount Spent**
-Joined `customer → payment` using `customer_id`, added up payments with `SUM`, sorted from highest to lowest, and kept the top 10 with `LIMIT 10`.
+**3. Top 10 Customers**
+Joined `customer → payment`, used `SUM()` to calculate total spending, and used `ORDER BY` and `LIMIT 10` to find the top 10 customers.
 
-**4. Each Film with its Category and Rental Rate**
-Joined `film → film_category → category`, where `film_category` is a bridge table that links films to their categories.
+**4. Films and Categories**
+Joined `film → film_category → category` to find each film's category and rental rate.
 
-**5. All Actors in Each Film**
-Joined `film → film_actor → actor`, where `film_actor` is a bridge table that links films to their actors.
+**5. Films and Actors**
+Joined `film → film_actor → actor` to find the actors in each film.
 
-**6. How Many Films in Each Category**
-Joined `category → film_category` using `category_id` and counted the films in each category with `COUNT`.
+**6. Films in Each Category**
+Joined `category → film_category` and used `COUNT()` to count the films in each category.
 
-**7. Categories with the Highest Revenue**
-Joined `payment → rental → inventory → film_category → category` to connect the money to a category, then added it up with `SUM`.
+**7. Revenue by Category**
+Joined `payment → rental → inventory → film_category → category` and used `SUM()` to calculate revenue for each category.
 
-**8. Customers Who Rented More Than 20 Films**
-Joined `customer → rental` using `customer_id`, counted rentals with `COUNT`, and kept only customers above 20 using `HAVING`.
+**8. Customers with 20+ Rentals**
+Joined `customer → rental`, counted rentals with `COUNT()`, and used `HAVING` to find customers with more than 20 rentals.
 
-**9. Cities with the Highest Rental Revenue**
-Joined `payment → customer → address → city` to find where each paying customer lives, then added up the revenue per city with `SUM`.
-
+**9. Revenue by City**
+Joined `payment → customer → address → city` and used `SUM()` to calculate rental revenue for each city.
 
 ## Bonus: Which Actor Earned the Most Revenue?
 `actor` and `payment` are not directly connected, so we need tables in the middle.
