@@ -22,31 +22,39 @@ A JOIN connects two tables using a column they both have. For example, `customer
 
 ---
 
-## ❓ How Each Question Was Solved
+## How Each Question Was Solved
 
 **1. Customer Name, Email, City, and Country**
 Joined `customer → address → city → country` step by step, because the customer table only stores an `address_id`, not the city or country.
+---
 
 **2. Every Payment with Customer Name, Film Title, and Amount**
 Joined `payment → customer` to get the name, and `payment → rental → inventory → film` to get the title, because a payment doesn't know the film directly.
+--- 
 
 **3. Top 10 Customers by Total Amount Spent**
 Joined `customer → payment` using `customer_id`, added up payments with `SUM`, sorted from highest to lowest, and kept the top 10 with `LIMIT 10`.
+--- 
 
 **4. Each Film with its Category and Rental Rate**
 Joined `film → film_category → category`, where `film_category` is a bridge table that links films to their categories.
+--- 
 
 **5. All Actors in Each Film**
 Joined `film → film_actor → actor`, where `film_actor` is a bridge table that links films to their actors.
+--- 
 
 **6. How Many Films in Each Category**
 Joined `category → film_category` using `category_id` and counted the films in each category with `COUNT`.
+--- 
 
 **7. Categories with the Highest Revenue**
 Joined `payment → rental → inventory → film_category → category` to connect the money to a category, then added it up with `SUM`.
+--- 
 
 **8. Customers Who Rented More Than 20 Films**
 Joined `customer → rental` using `customer_id`, counted rentals with `COUNT`, and kept only customers above 20 using `HAVING`.
+--- 
 
 **9. Cities with the Highest Rental Revenue**
 Joined `payment → customer → address → city` to find where each paying customer lives, then added up the revenue per city with `SUM`.
@@ -83,7 +91,7 @@ LIMIT 1;
 
 ---
 
-## 💡 Business Insights
+## Business Insights
 1. **Sports** is the top category. It has the most films and the highest revenue.
 2. **Most customers are regulars.** The majority have rented more than 20 films.
 3. **A few customers spend the most.** The top 10 customers spend much more than average, so a loyalty program could help keep them.
