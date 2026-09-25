@@ -84,6 +84,6 @@ LIMIT 1;
 ```
 
 ## Business Insights
-1. **Sports** is the top category. It has the most films and the highest revenue.
-2. **Most customers are regulars.** The majority have rented more than 20 films.
-3. **A few customers spend the most.** The top 10 customers spend much more than average, so a loyalty program could help keep them.
+1. **Sports is the top category.** It has the most films and the highest revenue, so adding more Sports titles is a good investment. **(Query 6 and Query 7)**
+2. **Most customers are regulars.** The majority have rented more than 20 films, which shows strong repeat business. **(Query 8)**
+3. **Some actors bring in more revenue.** Films with top actors like Gina Degeneres earn the most, so featuring their films can boost rentals. **(Bonus Challenge)**
